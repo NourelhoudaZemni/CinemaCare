@@ -1,6 +1,5 @@
 package tn.esprit.spring.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,15 @@ public class ParkingServiceImpl implements IParkingService {
 		return null;
 	}
 
-	@Override
+  @Override
+  public Parking DiminuerEspaceLibre(Long id) {
+    Parking cl = PR.findById(id).get();
+    cl.setEspaceLibre(cl.getEspaceLibre() -1);
+    PR.save(cl);
+    return cl;
+  }
+
+  @Override
 	public void supprimer(Long id) {
 		PR.deleteById(id);
 	}
@@ -52,8 +59,8 @@ public class ParkingServiceImpl implements IParkingService {
 	}
 
 	@Override
-	public Optional<Parking> findById(Long id) {
-
-		return PR.findById(id);
+	public Parking findById(Long id) {
+    Parking p = PR.findById(id).orElse(null);
+    return p;
 	}
 }

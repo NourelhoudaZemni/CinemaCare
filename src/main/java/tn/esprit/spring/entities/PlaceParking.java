@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,7 +14,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PlaceParking implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -23,7 +24,7 @@ public class PlaceParking implements Serializable {
 	private Long numero ;
 	private String etat ;
 	@ManyToOne
-	private PlaceParking placeparking;
+	private Parking parking;
 
 	public Long getNumero() {
 		return numero;
@@ -41,21 +42,21 @@ public class PlaceParking implements Serializable {
 		this.etat = etat;
 	}
 
-	public PlaceParking getPlaceparking() {
-		return placeparking;
-	}
+  public Parking getParking() {
+    return parking;
+  }
 
-	public void setPlaceparking(PlaceParking placeparking) {
-		this.placeparking = placeparking;
-	}
+  public void setParking(Parking parking) {
+    this.parking = parking;
+  }
 
-	public PlaceParking() {
+  public PlaceParking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	
-	
-	
+
+
+
 }

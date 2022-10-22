@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Parking implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,18 +59,18 @@ public class Parking implements Serializable {
 
 
 	@JsonIgnore
-	@OneToMany(mappedBy="placeparking", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy="parking", fetch=FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<PlaceParking> placeparkings;
 
-	public List<PlaceParking> getPlaceparkings() {
-		return placeparkings;
-	}
+  public List<PlaceParking> getPlaceparkings() {
+    return placeparkings;
+  }
 
-	public void setPlaceparkings(List<PlaceParking> placeparkings) {
-		this.placeparkings = placeparkings;
-	}
+  public void setPlaceparkings(List<PlaceParking> placeparkings) {
+    this.placeparkings = placeparkings;
+  }
 
-	public Parking() {
+  public Parking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

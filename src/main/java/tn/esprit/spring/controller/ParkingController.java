@@ -14,10 +14,10 @@ import tn.esprit.spring.services.IRPService;
 @RequestMapping("/parking")
 public class ParkingController {
 
-	
+
 	@Autowired
 	IRPService RPService;
-	
+
 	@Autowired
 	IParkingRepository parkingRepo;
 
@@ -28,11 +28,17 @@ public class ParkingController {
 
 	@Autowired
 	IRPService ppService;
-	
+
 	@PostMapping("/ajouter")
 	public void ajouter(@RequestBody Parking p){
 		parkingRepo.save(p);
 	}
+
+  @PutMapping("/DiminuerEspaceLibre/{id}")
+  public void ajouter(@PathVariable("id") Long id) {
+    parkingService.DiminuerEspaceLibre(id);
+  }
+
 
 
 	@DeleteMapping("/delete/{id}")
@@ -44,6 +50,11 @@ public class ParkingController {
 	public List<Parking> get(){
 		return (List<Parking>) parkingService.afficher();
 	}
+
+  @GetMapping("/get/{id}")
+  public Parking getbyId(@PathVariable("id") Long id){
+    return parkingService.findById(id);
+  }
 
 	@PutMapping("/affect/{id-parking}/{placeparkingID}")
 	public void affecterRP(@PathVariable("id-parking") Long idp ,@PathVariable("placeparkingID") Long placeparkingID ){
